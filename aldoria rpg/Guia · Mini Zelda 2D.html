@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Guia · Mini Zelda 2D</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+<style>
+:root{--bg:#f3efe4;--card:#fffdf6;--fg:#23232b;--mut:#666;--acc:#2e9e4f;--gold:#b8860b;--line:#d8d2c0;--key:#e9e3cf;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14151a;--card:#1d1f27;--fg:#ebe8de;--mut:#9a9aa5;--acc:#5fd17f;--gold:#ffd34d;--line:#2d303b;--key:#2a2d38}}
+:root[data-theme="dark"]{--bg:#14151a;--card:#1d1f27;--fg:#ebe8de;--mut:#9a9aa5;--acc:#5fd17f;--gold:#ffd34d;--line:#2d303b;--key:#2a2d38}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 56px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 system-ui,-apple-system,Segoe UI,sans-serif}
+.px{font-family:'Press Start 2P',ui-monospace,Menlo,Consolas,monospace;line-height:1.5}
+header{padding:48px 20px 32px;text-align:center;background:linear-gradient(160deg,#1e4d20,#2d6a2f 55%,#3a2d58);color:#fff}
+header h1{font-size:clamp(20px,5vw,34px);margin:0 0 12px}
+header p{margin:0 auto 20px;max-width:560px;opacity:.9}
+.btn{display:inline-block;background:var(--gold);color:#1a1a1a;padding:12px 22px;border-radius:8px;font-weight:700;text-decoration:none;box-shadow:0 4px 0 rgba(0,0,0,.35)}
+.btn:active{transform:translateY(2px);box-shadow:0 2px 0 rgba(0,0,0,.35)}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--card);border-bottom:1px solid var(--line);display:flex;gap:4px;overflow-x:auto;padding:8px 12px}
+nav a{white-space:nowrap;color:var(--fg);text-decoration:none;padding:6px 12px;border-radius:6px;font-size:14px}
+nav a:hover{background:var(--key)}
+main{max-width:920px;margin:0 auto;padding:12px 16px 56px}
+section{margin-top:36px}
+h2{font-size:15px;margin:0 0 14px;color:var(--acc)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:420px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);font-size:15px}
+th{color:var(--mut);font-weight:600;font-size:13px}
+kbd{display:inline-block;background:var(--key);border:1px solid var(--line);border-bottom-width:3px;border-radius:5px;padding:1px 8px;font:600 13px ui-monospace,Menlo,Consolas,monospace}
+.tag{font-size:12px;border-radius:99px;padding:2px 9px;background:var(--key);color:var(--mut);white-space:nowrap}
+.mut{color:var(--mut)}
+.gold{color:var(--gold);font-weight:700}
+ol,ul{padding-left:20px;margin:8px 0}
+li{margin:6px 0}
+input[type=range]{width:100%;accent-color:var(--acc)}
+.stat{display:flex;justify-content:space-between;border-bottom:1px dashed var(--line);padding:6px 0}
+footer{text-align:center;color:var(--mut);padding:24px;font-size:13px}
+</style>
+</head>
+<body>
+<header>
+  <h1 class="px">MINI ZELDA 2D</h1>
+  <p>Guia rápido de Aldoria: controles, poderes, armas, mapas e o passo a passo pra restaurar o Cristal do Sol e derrotar a Noctra.</p>
+  <a class="btn" href="https://claude.ai/artifact/55KpXmtnzqR1Br2LU2iA6c" target="_blank" rel="noopener">▶ Jogar agora</a>
+</header>
+<nav>
+  <a href="#controles">Controles</a><a href="#nivel">Nível</a><a href="#poderes">Poderes</a><a href="#armas">Armas</a>
+  <a href="#mapas">Mapas</a><a href="#missoes">Missões</a><a href="#chefes">Inimigos</a><a href="#dicas">Dicas</a>
+</nav>
+<main>
+
+<section id="controles">
+  <h2 class="px">CONTROLES</h2>
+  <div class="card wrap"><table>
+    <tr><th>Tecla</th><th>Ação</th></tr>
+    <tr><td><kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd> ou <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></td><td>Mover</td></tr>
+    <tr><td><kbd>Espaço</kbd></td><td>Atacar com a espada (na direção em que você olha)</td></tr>
+    <tr><td><kbd>E</kbd> ou <kbd>Enter</kbd></td><td>Falar com NPC, ler tábua, avançar diálogo, fechar a loja</td></tr>
+    <tr><td><kbd>Shift</kbd></td><td>Dash <span class="tag">Nv 2</span></td></tr>
+    <tr><td><kbd>Q</kbd></td><td>Giro <span class="tag">Nv 3</span></td></tr>
+    <tr><td><kbd>F</kbd></td><td>Bola de fogo <span class="tag">Nv 4</span></td></tr>
+    <tr><td><kbd>X</kbd></td><td>Escudo <span class="tag">Nv 6</span></td></tr>
+    <tr><td><kbd>C</kbd></td><td>Trovão <span class="tag">Nv 9</span></td></tr>
+    <tr><td><kbd>1</kbd>–<kbd>4</kbd></td><td>Comprar ou equipar arma (na loja do Torvald)</td></tr>
+    <tr><td><kbd>M</kbd></td><td>Liga/desliga o som</td></tr>
+    <tr><td><kbd>R</kbd></td><td>Reiniciar o jogo</td></tr>
+  </table></div>
+  <p class="mut">⚠ O jogo não tem save: recarregar a página ou apertar R recomeça do zero. O som só começa depois da primeira tecla apertada.</p>
+</section>
+
+<section id="nivel">
+  <h2 class="px">NÍVEL E XP</h2>
+  <div class="grid">
+    <div class="card">
+      <b>Calculadora de nível</b>
+      <p class="mut" style="margin:4px 0 8px">Arraste e veja o que cada nível entrega.</p>
+      <input id="lv" type="range" min="1" max="15" value="1" aria-label="Nível">
+      <div class="stat"><span>Nível</span><b id="o-lv">1</b></div>
+      <div class="stat"><span>XP pra subir</span><b id="o-need">7</b></div>
+      <div class="stat"><span>XP total acumulado</span><b id="o-tot">0</b></div>
+      <div class="stat"><span>Corações máximos*</span><b id="o-hp">6</b></div>
+      <div class="stat"><span>Bônus de dano</span><b id="o-dmg">+0</b></div>
+      <div class="stat"><span>Poderes</span><b id="o-pw">nenhum</b></div>
+      <p class="mut" style="font-size:13px;margin:8px 0 0">*Só pelo nível. Missões dão corações extras.</p>
+    </div>
+    <div class="card wrap">
+      <b>XP e ouro por inimigo</b>
+      <table style="min-width:300px">
+        <tr><th>Inimigo</th><th>XP</th><th>Ouro</th></tr>
+        <tr><td>Slime</td><td>3</td><td>2</td></tr>
+        <tr><td>Slime sombrio</td><td>8</td><td>6</td></tr>
+        <tr><td>Espectro</td><td>14</td><td>12</td></tr>
+        <tr><td>Rei Slime</td><td>20</td><td>30</td></tr>
+        <tr><td>Guardião de Pedra</td><td>50</td><td>80</td></tr>
+        <tr><td>Vorn</td><td>60</td><td>100</td></tr>
+        <tr><td>Noctra</td><td>100</td><td>300</td></tr>
+      </table>
+      <p class="mut" style="font-size:13px;margin:8px 0 0">XP pra subir = nível × 7. Subir de nível cura toda a vida. Nível máximo: 15.</p>
+    </div>
+  </div>
+</section>
+
+<section id="poderes">
+  <h2 class="px">PODERES</h2>
+  <div class="grid">
+    <div class="card"><b>💨 Dash</b> <span class="tag">Nv 2 · Shift</span><p class="mut">Avanço rápido e invulnerável. Recarga: 1 s. Atravesse inimigos e escape de cantos.</p></div>
+    <div class="card"><b>🌀 Giro</b> <span class="tag">Nv 3 · Q</span><p class="mut">Acerta todos os inimigos ao seu redor. Recarga: 2,5 s. Ótimo quando te cercam.</p></div>
+    <div class="card"><b>🔥 Fogo</b> <span class="tag">Nv 4 · F</span><p class="mut">Projétil à distância, causa dano da arma +1. Recarga: 1,5 s.</p></div>
+    <div class="card"><b>🛡 Escudo</b> <span class="tag">Nv 6 · X</span><p class="mut">Fica invulnerável por 2,5 s. Recarga: 7 s. Use contra ataques de chefe.</p></div>
+    <div class="card"><b>⚡ Trovão</b> <span class="tag">Nv 9 · C</span><p class="mut">Dá o dobro do seu dano em todos os inimigos do mapa. Recarga: 10 s.</p></div>
+  </div>
+</section>
+
+<section id="armas">
+  <h2 class="px">ARMAS</h2>
+  <div class="card wrap"><table>
+    <tr><th>Arma</th><th>Dano base</th><th>Preço</th></tr>
+    <tr><td>Espada de madeira</td><td>1</td><td>Grátis</td></tr>
+    <tr><td>Espada de ferro</td><td>2</td><td class="gold">40</td></tr>
+    <tr><td>Espada de aço</td><td>3</td><td class="gold">110</td></tr>
+    <tr><td>Lâmina Solar</td><td>5</td><td class="gold">280</td></tr>
+  </table></div>
+  <p class="mut">O ferreiro <b>Torvald</b> fica no vilarejo, embaixo, perto da Lira. Dano final = arma + bônus da espada afiada do Bram (+1) + 1 a cada 4 níveis.</p>
+</section>
+
+<section id="mapas">
+  <h2 class="px">MAPAS E MUNDOS</h2>
+  <div class="grid">
+    <div class="card">
+      <b>☀ Mundo da Luz</b>
+      <ul>
+        <li><b>Vilarejo:</b> Ancião, Lira, Torvald. Portas: norte (caverna), oeste (floresta), leste (praia).</li>
+        <li><b>Caverna:</b> o machado do Bram fica aqui. Porta norte leva às ruínas (precisa de 2 fragmentos).</li>
+        <li><b>Floresta:</b> Bram, o lenhador.</li>
+        <li><b>Praia:</b> Naru, o pescador.</li>
+        <li><b>Ruínas:</b> Rei Slime. O portal no topo leva às Sombras (precisa de 3 fragmentos).</li>
+      </ul>
+    </div>
+    <div class="card">
+      <b>🌑 Mundo das Sombras</b>
+      <ul>
+        <li><b>Planície Sombria:</b> Rei Aldor (fantasma). Leste: Pântano. Norte: Torre.</li>
+        <li><b>Pântano de Lava:</b> muitos inimigos, ótimo pra farmar. Norte: Cripta.</li>
+        <li><b>Torre de Vorn:</b> chefe Vorn. O portal no topo leva ao Vazio (precisa de 5 fragmentos).</li>
+        <li><b>Cripta Esquecida:</b> Guardião de Pedra.</li>
+        <li><b>O Vazio:</b> Noctra, a chefe final.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="mut">Inimigos comuns reaparecem quando você sai e volta no mapa. As portas têm 2 tiles de largura, então é só andar até elas.</p>
+</section>
+
+<section id="missoes">
+  <h2 class="px">PASSO A PASSO</h2>
+  <div class="card">
+    <ol>
+      <li><b>Ancião</b> (vilarejo): aceite a missão e derrote 5 slimes. Volte e fale com ele: <span class="gold">1º fragmento</span> e +1 coração.</li>
+      <li><b>Bram</b> (floresta, porta oeste): aceite a missão, ache o machado brilhando na caverna e devolva: <span class="gold">2º fragmento</span> e espada afiada (+1 dano).</li>
+      <li>Com 2 fragmentos, entre nas <b>ruínas</b> (porta norte da caverna) e derrote o <b>Rei Slime</b>: <span class="gold">3º fragmento</span>.</li>
+      <li>Cruze o <b>portal</b> no topo das ruínas e fale com o <b>Rei Aldor</b> na Planície Sombria.</li>
+      <li>Vá à <b>Torre de Vorn</b> (norte da planície) e derrote o <b>Vorn</b>: <span class="gold">4º fragmento</span>.</li>
+      <li>Vá ao <b>Pântano de Lava</b> (leste), entre pela porta norte na <b>Cripta</b> e derrote o <b>Guardião</b>: <span class="gold">5º fragmento</span>.</li>
+      <li>Volte à Torre, cruze o portal do topo, entre no <b>Vazio</b> e derrote a <b>Noctra</b>.</li>
+    </ol>
+  </div>
+  <h2 class="px" style="margin-top:20px">MISSÕES SECUNDÁRIAS</h2>
+  <div class="grid">
+    <div class="card"><b>Lira</b> (vilarejo)<p class="mut">Derrote 10 inimigos no total: <b>+1 coração</b>.</p></div>
+    <div class="card"><b>Naru</b> (praia)<p class="mut">Derrote 25 inimigos no total: <b>+120 ouro e +1 coração</b>.</p></div>
+    <div class="card"><b>Tábuas antigas</b><p class="mut">Aperte <kbd>E</kbd> perto delas pra ler a história de Aldoria, do Cristal e dos diários do Vorn.</p></div>
+  </div>
+</section>
+
+<section id="chefes">
+  <h2 class="px">INIMIGOS E CHEFES</h2>
+  <div class="card wrap"><table>
+    <tr><th>Inimigo</th><th>Vida</th><th>Dano de contato</th><th>Onde</th></tr>
+    <tr><td>Slime</td><td>3</td><td>1</td><td>Mundo da Luz</td></tr>
+    <tr><td>Slime sombrio</td><td>6</td><td>1</td><td>Sombras</td></tr>
+    <tr><td>Espectro</td><td>10</td><td>2</td><td>Cripta e Vazio</td></tr>
+    <tr><td>Rei Slime</td><td>18</td><td>1</td><td>Ruínas</td></tr>
+    <tr><td>Guardião de Pedra</td><td>36</td><td>2</td><td>Cripta</td></tr>
+    <tr><td>Vorn</td><td>40</td><td>2</td><td>Torre</td></tr>
+    <tr><td>Noctra</td><td>80</td><td>3</td><td>Vazio</td></tr>
+  </table></div>
+  <p class="mut">Depois de levar dano você fica invulnerável por cerca de 1 segundo. Os chefes também são empurrados pela espada, só que menos.</p>
+</section>
+
+<section id="dicas">
+  <h2 class="px">DICAS</h2>
+  <div class="grid">
+    <div class="card"><b>Bata e afaste</b><p class="mut">A espada tem alcance curto. Acerte, recue um passo e deixe o inimigo vir. O empurrão te dá espaço.</p></div>
+    <div class="card"><b>Farme antes do chefe</b><p class="mut">Vorn e Noctra são difíceis com poucos corações. Faça uns níveis no Pântano de Lava antes.</p></div>
+    <div class="card"><b>Compre a Lâmina Solar</b><p class="mut">Junte 280 de ouro antes do Vazio. Dano alto resolve fugas e acaba a luta mais rápido.</p></div>
+    <div class="card"><b>Combine poderes</b><p class="mut">Escudo, depois Giro cercado de espectros, depois Trovão pra limpar a tela. Vale em chefes também.</p></div>
+    <div class="card"><b>Corações curam</b><p class="mut">Inimigos soltam corações às vezes. Subir de nível também cura tudo, então vale matar uns antes do chefe.</p></div>
+    <div class="card"><b>Dash é fuga</b><p class="mut">Se estiver cercado ou com 1 coração, use o dash pra atravessar e reposicionar.</p></div>
+  </div>
+</section>
+
+</main>
+<footer>Mini Zelda 2D · guia não oficial feito pra quem está jogando. Boa sorte, herdeiro de Aldoria.</footer>
+<script>
+const PW=[[2,'Dash'],[3,'Giro'],[4,'Fogo'],[6,'Escudo'],[9,'Trovão']];
+const r=document.getElementById('lv'),$=i=>document.getElementById(i);
+function upd(){const L=+r.value,p=PW.filter(x=>L>=x[0]).map(x=>x[1]);
+ $('o-lv').textContent=L;
+ $('o-need').textContent=L>=15?'máximo':L*7;
+ $('o-tot').textContent=7*L*(L-1)/2;
+ $('o-hp').textContent=6+(L>>1);
+ $('o-dmg').textContent='+'+(L>>2);
+ $('o-pw').textContent=p.length?p.join(', '):'nenhum'}
+r.addEventListener('input',upd);upd();
+</script>
+</body>
+</html>
